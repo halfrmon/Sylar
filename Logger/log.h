@@ -7,6 +7,7 @@
 #include <fstream>
 #include<sstream>
 #include <iostream>
+#include <vector>
 
 namespace sylar{
 
@@ -88,6 +89,19 @@ class LogFormatter{
 public:
     typedef std::shared_ptr<LogFormatter> ptr;
     std::string format(LogEvent::ptr event);//将日志事件格式传入
+    LogFormatter(const std::string &pattern);
+private:
+    class FormatItem{
+        public:
+            typedef std::shared_ptr<FormatItem> ptr;
+            virtual ~FormatItem(){};
+            virtual void format(std::ostream& os,LogEvent::ptr event) = 0;
+
+    };
+    void init();
+private:
+    std::string m_pattern;
+    std::vector<FormatItem> m_items;
 };
 
 class StdoutLogAppender:public LogAppender{//输出到控制台的appender

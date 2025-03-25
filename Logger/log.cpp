@@ -70,3 +70,24 @@ FileLogAppender::FileLogAppender(const std::string &filename)
     :m_filename(filename){
     
 }
+
+LogFormatter::LogFormatter(const std::string &pattern)
+    :m_pattern(pattern){
+        
+};
+
+
+std::string LogFormatter::format(LogEvent::ptr event){
+    std::stringstream ss;
+    for (auto &i : m_items){
+        i.format(ss,event);
+    }
+}
+
+
+void LogFormatter::init(){
+    
+}
+
+};
+
