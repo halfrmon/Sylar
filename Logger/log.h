@@ -1,3 +1,12 @@
+/**
+ * @file log.h
+ * @brief 
+ * @author halfmelon   (308917955@qq.com)
+ * @version 0.1
+ * @date 2025-03-25
+ * 
+ * @copyright Copyright (c) 2025
+ */
 #ifndef __SYLAR_LOG_H__
 #define __SYLAR_LOG_H__
 #include <stdint.h>
